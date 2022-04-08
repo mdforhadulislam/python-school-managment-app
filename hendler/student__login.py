@@ -6,7 +6,7 @@ id = Random().randint(1,10000)
 
 class Student:
     def __init__(self):
-        self.name="f"
+        self.name="Student Login"
 
     def create_student(self):
 
@@ -32,11 +32,11 @@ class Student:
                 "password": self.password,
             }
             data.create('.data/students/' + self.first_name +"-"+ self.last_name + "-" + str(id) + ".json",student__data)
-            return "Student Has Been Created\n" + "Your ID Number" + studentID +"\n"+ "Clucte your studentID Number"
+            return "Student Has Been Created\n" + "Your ID Number " + studentID +"\n"+ "Clucte your studentID Number"
         else:
             return "Requested Data Problem"
 
-    def get_Student(self):
+    def get_student(self):
         id = input("Enter Your Student ID: ")
         if id:
             read = data.read('.data/students/'+id+".json")
@@ -58,6 +58,8 @@ class Student:
                     self.password = input("Enter your New password: ")
 
                     student__data = {}
+
+                    student__data["id"] = id
 
                     if self.first_name:
                         student__data["first_name"] = self.first_name

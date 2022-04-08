@@ -23,7 +23,6 @@ class Data:
             except:
                 return "server side Error"
 
-
     def read(self,paths):
         try:
             read = open(path.abspath(paths), 'r')
@@ -33,7 +32,6 @@ class Data:
             return data
         except:
             return "server side Error"
-
 
     def update(self,paths,data):
         try:
@@ -46,7 +44,6 @@ class Data:
             read.close()
         except:
             return "server side Error"
-
 
     def delete(self,paths):
         try:
