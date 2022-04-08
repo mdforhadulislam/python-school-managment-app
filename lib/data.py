@@ -8,7 +8,7 @@ class Data:
         self.name = "data"
 
     def create(self,paths,data):
-        print(path.abspath(paths))
+
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
@@ -21,7 +21,7 @@ class Data:
                 write.close()
                 return data
             except:
-                return "server side Error"
+                return 'server side Error'
 
     def read(self,paths):
         try:
