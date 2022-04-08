@@ -1,5 +1,6 @@
 import os
 from os import path
+import json
 
 
 class Data:
@@ -16,17 +17,18 @@ class Data:
         except:
             try:
                 write = open(path.abspath(paths), 'w')
-                write.write(data)
+                write.write(json.dumps(data))
                 write.close()
                 return data
             except:
                 return "server side Error"
 
 
-    def read(self,paths,data):
+    def read(self,paths):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
+            data = json.loads(data)
             read.close()
             return data
         except:
@@ -36,24 +38,24 @@ class Data:
     def update(self,paths,data):
         try:
             read = open(path.abspath(paths), 'r')
-            data = read.read()
-            if data:
-                child_read=open(path.abspath(paths),'w')
-                child_read.write(data)
+            value = read.read()
+            if value:
+                child_read = open(path.abspath(paths),'w')
+                child_read.write(json.dumps(data))
                 child_read.close()
             read.close()
         except:
             return "server side Error"
 
 
-    def delete(self,paths,data):
+    def delete(self,paths):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
             read.close()
             try:
                 os.remove(path.abspath(paths))
-                return "Data deleted"
+                return "student deleted"
             except:
                 return "server side Error"
         except:
