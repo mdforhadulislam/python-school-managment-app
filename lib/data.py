@@ -7,7 +7,7 @@ class Data:
     def __init__(self):
         self.name = "data"
 
-    def create(self,paths,data):
+    def create(self, paths, data):
 
         try:
             read = open(path.abspath(paths), 'r')
@@ -23,7 +23,7 @@ class Data:
             except:
                 return 'server side Error'
 
-    def read(self,paths):
+    def read(self, paths):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
@@ -33,7 +33,7 @@ class Data:
         except:
             return "server side Error"
 
-    def update(self,paths,data):
+    def update(self, paths, data):
         try:
             read = open(path.abspath(paths), 'r')
             value = read.read()
@@ -41,18 +41,19 @@ class Data:
                 child_read = open(path.abspath(paths),'w')
                 child_read.write(json.dumps(data))
                 child_read.close()
+                return "Data updated"
             read.close()
         except:
             return "server side Error"
 
-    def delete(self,paths):
+    def delete(self, paths):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
             read.close()
             try:
                 os.remove(path.abspath(paths))
-                return "student deleted"
+                return "data deleted"
             except:
                 return "server side Error"
         except:
