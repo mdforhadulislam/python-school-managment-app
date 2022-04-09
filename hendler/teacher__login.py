@@ -50,7 +50,7 @@ class Teacher:
 
                     teacher__data = {}
 
-                    teacher__data["id"]=id
+                    teacher__data["id"] = id
 
                     if self.first_name:
                         teacher__data["first_name"] = self.first_name
