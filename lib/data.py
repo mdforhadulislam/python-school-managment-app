@@ -8,7 +8,7 @@ class Data:
         self.name = "data"
 
     def create(self, paths, data):
-
+        print(path.abspath(paths),data)
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()

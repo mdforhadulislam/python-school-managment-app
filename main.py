@@ -9,5 +9,6 @@ student__payments=StudentPayments()
 
 teacher=Teacher()
 teacher__payments=TeacherPayments()
+teacher__payments.delete_payments()
 
 

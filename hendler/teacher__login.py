@@ -2,7 +2,7 @@ from random import Random
 from lib.data import Data
 
 data= Data()
-id = Random().randint(1,10000)
+id = Random().randint(1, 10000)
 
 class Teacher:
     def __init__(self):
