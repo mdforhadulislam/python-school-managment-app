@@ -1,6 +1,6 @@
+import json
 import os
 from os import path
-import json
 
 
 class Data:
@@ -37,7 +37,7 @@ class Data:
             read = open(path.abspath(paths), 'r')
             value = read.read()
             if value:
-                child_read = open(path.abspath(paths),'w')
+                child_read = open(path.abspath(paths), 'w')
                 child_read.write(json.dumps(data))
                 child_read.close()
                 return "Data updated"
@@ -57,4 +57,3 @@ class Data:
                 return "server side Error"
         except:
             return "server side Error"
-
