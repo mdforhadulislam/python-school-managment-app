@@ -1,6 +1,3 @@
-from operator import truediv
-from venv import create
-
 from hendler.exam__routine import ExamRoutine
 from hendler.notice import Notice
 from hendler.routine import Routine
