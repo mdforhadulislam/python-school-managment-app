@@ -1,20 +1,22 @@
 from random import Random
+
 from lib.data import Data
 
-data= Data()
+data = Data()
 id = Random().randint(1, 10000)
+
 
 class Teacher:
     def __init__(self):
-        self.name="Teachers Login"
+        self.name = "Teachers Login"
 
     def create_teacher(self):
 
-        self.first_name =input("Enter your first name: ")
-        self.last_name =input("Enter your last name: ")
+        self.first_name = input("Enter your first name: ")
+        self.last_name = input("Enter your last name: ")
         self.phone_number = input("Enter your phone number: ")
         self.email = input("Enter your email: ")
-        self.password =input("Enter your password: ")
+        self.password = input("Enter your password: ")
 
         if self.first_name and self.last_name and self.phone_number and self.email and self.password:
             teacherID = self.first_name + "-" + self.last_name + "-" + str(id)
@@ -25,8 +27,9 @@ class Teacher:
                 "email": self.email,
                 "password": self.password,
             }
-            data.create('.data/teachers/' + self.first_name +"-"+ self.last_name + "-" + str(id) + ".json",student__data)
-            return "Teacher Has Been Created\n" + "Your ID Number " + teacherID +"\n"+ "Clucte Your Teacher Id Number"
+            data.create('.data/teachers/' + self.first_name + "-" +
+                        self.last_name + "-" + str(id) + ".json", student__data)
+            return "\nTeacher Has Been Created\n" + "Your ID Number " + teacherID + "\n" + "Clucte Your Teacher Id Number"
         else:
             return "Requested Data Problem"
 
@@ -74,7 +77,8 @@ class Teacher:
 
                     if teacher__data:
                         try:
-                            data.update('.data/teachers/' + id + ".json", teacher__data)
+                            data.update('.data/teachers/' + id +
+                                        ".json", teacher__data)
                             return "Teacher Has Been Updated"
                         except:
                             return "There Was Server side Error"

@@ -1,23 +1,25 @@
 from random import Random
+
 from lib.data import Data
 
-data= Data()
-id = Random().randint(1,10000)
+data = Data()
+id = Random().randint(1, 10000)
+
 
 class Student:
     def __init__(self):
-        self.name="Student Login"
+        self.name = "Student Login"
 
     def create_student(self):
 
-        self.first_name =input("Enter your first name: ")
-        self.last_name =input("Enter your last name: ")
+        self.first_name = input("Enter your first name: ")
+        self.last_name = input("Enter your last name: ")
         self.class_name = input("Enter your class: ")
         self.present_address = input("Enter your present address: ")
-        self.permanent_address =input("Enter your permanent address: ")
+        self.permanent_address = input("Enter your permanent address: ")
         self.phone_number = input("Enter your phone number: ")
         self.email = input("Enter your email: ")
-        self.password =input("Enter your password: ")
+        self.password = input("Enter your password: ")
 
         if self.first_name and self.last_name and self.phone_number and self.class_name and self.email and self.password:
             studentID = self.first_name + "-" + self.last_name + "-" + str(id)
@@ -31,8 +33,9 @@ class Student:
                 "email": self.email,
                 "password": self.password,
             }
-            data.create('.data/students/' + self.first_name +"-"+ self.last_name + "-" + str(id) + ".json",student__data)
-            return "Student Has Been Created\n" + "Your ID Number " + studentID +"\n"+ "Clucte your studentID Number"
+            data.create('.data/students/' + self.first_name + "-" +
+                        self.last_name + "-" + str(id) + ".json", student__data)
+            return "\nStudent Has Been Created\n" + "Your ID Number " + studentID + "\n" + "Clucte your studentID Number"
         else:
             return "Requested Data Problem"
 
@@ -51,8 +54,10 @@ class Student:
                     self.first_name = input("Enter your New first name: ")
                     self.last_name = input("Enter your New last name: ")
                     self.class_name = input("Enter your New class: ")
-                    self.present_address = input("Enter your New present address: ")
-                    self.permanent_address = input("Enter your New permanent address: ")
+                    self.present_address = input(
+                        "Enter your New present address: ")
+                    self.permanent_address = input(
+                        "Enter your New permanent address: ")
                     self.phone_number = input("Enter your New phone number: ")
                     self.email = input("Enter your New email: ")
                     self.password = input("Enter your New password: ")
@@ -98,7 +103,8 @@ class Student:
 
                     if student__data:
                         try:
-                            data.update('.data/students/' + id + ".json", student__data)
+                            data.update('.data/students/' + id +
+                                        ".json", student__data)
                             return "Student Has Been Updated"
                         except:
                             return "There Was Server side Error"
@@ -115,8 +121,12 @@ class Student:
         id = input("Enter Your Student ID: ")
         if id:
             try:
-                data.delete('.data/students/' + id + ".json")
-                return "Student Has Been Deleted"
+                read = data.read('.data/students/'+id+".json")
+                if read == "server side Error":
+                    return "Student Not Found"
+                else:
+                    data.delete('.data/students/' + id + ".json")
+                    return "Student Has Been Deleted"
             except:
                 return "Student Not Found"
         else:
