@@ -6,29 +6,30 @@ from hendler.student__payments import StudentPayments
 from hendler.teacher__login import Teacher
 from hendler.teacher__payments import TeacherPayments
 
-# this class alaways working  teacher class
+# this class always working  teacher class
 teacher = Teacher()
-# this class alaways working  teacher added
+# this class always working  teacher added
 # get teacher
 # update teacher data
 # delete teacher data
 
-# this class alaways working  teacher payments
+# this class always working  teacher payments
 teacher__payments = TeacherPayments()
 # when teacher want to pay crate teacher payments
 # get teacher payments
 # update teacher payments add another payment
 # delete teacher payments
+teacher__payments.delete_payments()
 
 
 # this class is student class
 student = Student()
-# this class alaways working create student
+# this class always working create student
 # get student
 # update student data
 # delete student data
 
-# this class alaways working  student payments
+# this class always working  student payments
 student__payments = StudentPayments()
 # when student want to pay crate student payments
 # get student payments
@@ -38,27 +39,27 @@ student__payments = StudentPayments()
 
 # this class student routines
 routine = Routine()
-# teacher alaways create student routine
-# student awalys get routine
-# teacher awalys update routine
-# teacher awalys delete routine
+# teacher always create student routine
+# student always get routine
+# teacher always update routine
+# teacher always delete routine
 
 
 # this class student exam routine
 exam__routine = ExamRoutine()
-# teacher alaways create student exam routine
-# student awalys get exam routine
-# teacher awalys update exam routine
-# teacher awalys delete exam routine
+# teacher always create student exam routine
+# student always get exam routine
+# teacher always update exam routine
+# teacher always delete exam routine
 
 
 # this class working notice
 notice = Notice()
-# teacher alaways crate notice
-# student awalys get notice
-# teacher awalys update notice
-# teacher awalys delete notice
+# teacher always crate notice
+# student always get notice
+# teacher always update notice
+# teacher always delete notice
 
 
-idendity = input("What is your identity: \n" +
-                 "1.Teacher \n" + "2.Student \n" + "3.Admin \n")
+# identity = input("What is your identity: \n" +
+#                  "1.Teacher \n" + "2.Student \n" + "3.Admin \n")

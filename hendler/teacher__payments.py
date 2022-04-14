@@ -1,6 +1,10 @@
+import math
+from random import Random
+
 from lib.data import Data
 
 data = Data()
+token = Random().randint(1, 1000000)
 
 
 class TeacherPayments:
@@ -15,11 +19,13 @@ class TeacherPayments:
         try:
             read_teacher = data.read('.data/teachers/' + id + '.json')
 
-            if read_teacher:
-                payment_data = data.read('../.data/teacher-payments/' + id + '.json')
+            if read_teacher['id']==id:
+                payment_data = data.read(
+                    '../.data/teacher-payments/' + id + '.json')
 
                 if payment_data == "server side Error":
-                    payments_date = input("Enter payments date Formet(2022-04-08): ")
+                    payments_date = input(
+                        "Enter payments date Formet(2022-04-08): ")
                     payments_amount = int(input("Enter payments amount: "))
                     payments_month = int(input(
                         "1. January\n" + "2. February\n" + "3. March\n" + "4. April\n" + "5. May\n" + "6. June\n" + "7. July\n" + "8. August\n" + "9. September\n" + "10. October\n" + "11. November\n" + "12. December\n" + "Enter payments month number: "))
@@ -34,6 +40,7 @@ class TeacherPayments:
                         "id": id,
                         "payments": [
                             {
+                                "token": token,
                                 "date": payments_date,
                                 "amount": payments_amount,
                                 "payment_month": month_list[payments_month - 1],
@@ -41,7 +48,8 @@ class TeacherPayments:
                             }
                         ]
                     }
-                    data.create('.data/teacher-payments/' + id + '.json', teacher__payments)
+                    data.create('.data/teacher-payments/' +
+                                id + '.json', teacher__payments)
                     return teacher__payments
                 else:
                     return "Teacher payments already exist"
@@ -53,7 +61,8 @@ class TeacherPayments:
     def read_payments(self):
         id = input("Enter Teacher id: ")
         if id:
-            payment_data = data.read('../.data/teacher-payments/' + id + '.json')
+            payment_data = data.read(
+                '../.data/teacher-payments/' + id + '.json')
             return payment_data
         else:
             return "Payment File Not Created"
@@ -64,7 +73,8 @@ class TeacherPayments:
                       "November", "December"]
         read_payment = data.read('.data/teacher-payments/' + id + '.json')
         if read_payment:
-            payments_date = input("Enter new payments date Formed(2022-04-08): ")
+            payments_date = input(
+                "Enter new payments date Formed(2022-04-08): ")
             payments_amount = int(input("Enter new payments amount: "))
             payments_month = int(input(
                 "1. January\n" + "2. February\n" + "3. March\n" + "4. April\n" + "5. May\n" + "6. June\n" + "7. July\n" + "8. August\n" + "9. September\n" + "10. October\n" + "11. November\n" + "12. December\n" + "Enter payments month number: "))
@@ -81,6 +91,7 @@ class TeacherPayments:
                     "payments": []
                 }
                 new_payments = {
+                    "token": token,
                     "date": payments_date,
                     "amount": payments_amount,
                     "payment_month": month_list[payments_month - 1],
@@ -88,7 +99,8 @@ class TeacherPayments:
                 }
                 teacher__payments["payments"] = read_payment["payments"]
                 teacher__payments["payments"].append(new_payments)
-                data.update('.data/teacher-payments/' + id + ".json", teacher__payments)
+                data.update('.data/teacher-payments/' +
+                            id + ".json", teacher__payments)
                 return "Payments update Successfully"
             else:
                 return "There are problem in your request "

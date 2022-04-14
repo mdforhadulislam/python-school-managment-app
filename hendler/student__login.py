@@ -15,6 +15,7 @@ class Student:
         self.first_name = input("Enter your first name: ")
         self.last_name = input("Enter your last name: ")
         self.class_name = input("Enter your class: ")
+        self.class_roll = input("Enter your class Roll: ")
         self.present_address = input("Enter your present address: ")
         self.permanent_address = input("Enter your permanent address: ")
         self.phone_number = input("Enter your phone number: ")
@@ -27,7 +28,8 @@ class Student:
                 "id": studentID,
                 "first_name": self.first_name,
                 "last_name": self.last_name,
-                "class_name": self.class_name,
+                "class": self.class_name,
+                "roll": self.class_roll,
                 "present_address": self.present_address,
                 "permanent_address": self.permanent_address,
                 "email": self.email,
@@ -54,6 +56,7 @@ class Student:
                     self.first_name = input("Enter your New first name: ")
                     self.last_name = input("Enter your New last name: ")
                     self.class_name = input("Enter your New class: ")
+                    self.class_roll = input("Enter your class Roll: ")
                     self.present_address = input(
                         "Enter your New present address: ")
                     self.permanent_address = input(
@@ -77,9 +80,14 @@ class Student:
                         student__data["last_name"] = read["last_name"]
 
                     if self.class_name:
-                        student__data["class_name"] = self.class_name
+                        student__data["class"] = self.class_name
                     else:
-                        student__data["class_name"] = read["class_name"]
+                        student__data["class"] = read["class"]
+
+                    if self.class_roll:
+                        student__data["roll"] = self.class_roll
+                    else:
+                        student__data["roll"] = read["roll"]
 
                     if self.present_address:
                         student__data["present_address"] = self.present_address
