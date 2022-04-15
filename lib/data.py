@@ -8,13 +8,13 @@ class Data:
     def __init__(self):
         self.name = "Make Data File"
 
-    def create(self,paths,data):
+    def create(self, paths, data):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
             read.close()
             return False
-        except:
+        except FileExistsError and FileNotFoundError:
             write = open(path.abspath(paths), 'w')
             write.write(convertJSON(data))
             write.close()
@@ -27,7 +27,7 @@ class Data:
             data = convertDICT(data)
             read.close()
             return data
-        except:
+        except FileExistsError and FileNotFoundError:
             return False
 
     def update(self, paths, data):
@@ -40,7 +40,7 @@ class Data:
                 child_read.close()
                 return True
             read.close()
-        except:
+        except FileExistsError and FileNotFoundError:
             return False
 
     def delete(self, paths):
@@ -53,5 +53,5 @@ class Data:
                 return True
             else:
                 return False
-        except:
+        except FileExistsError and FileNotFoundError:
             return False

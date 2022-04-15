@@ -36,7 +36,7 @@ class Student_Registration:
                 "attendance": []
             }
             data.create('.data/students-data/' + id_number + '.json', student_data)
-            return 'Student Registration Successful' + '\n' + 'Your ID Number is: ' + id_number + '\n' + 'calect your ID Number and Password'
+            return '\nStudent Registration Successful\n' + 'Student ID Number is: ' + id_number + '\n' + 'calect Student ID Number and Password'
         else:
             return 'Student Registration Failed'
 
