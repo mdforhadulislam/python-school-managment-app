@@ -7,5 +7,5 @@ teacher = Teacher_Registration()
 student_payments = Student_Payments()
 
 # print(student.add())
-print(student_payments.create())
+print(student_payments.read())
 
