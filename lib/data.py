@@ -1,37 +1,34 @@
-import json
 import os
 from os import path
+from lib.utilities import convertJSON
+from lib.utilities import convertDICT
 
 
 class Data:
     def __init__(self):
-        self.name = "data"
+        self.name = "Make Data File"
 
-    def create(self, paths, data):
-        print(path.abspath(paths), data)
+    def create(self,paths,data):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
             read.close()
-            return "Data already exists"
+            return False
         except:
-            try:
-                write = open(path.abspath(paths), 'w')
-                write.write(json.dumps(data))
-                write.close()
-                return data
-            except:
-                return 'server side Error'
+            write = open(path.abspath(paths), 'w')
+            write.write(convertJSON(data))
+            write.close()
+            return data
 
     def read(self, paths):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
-            data = json.loads(data)
+            data = convertDICT(data)
             read.close()
             return data
         except:
-            return "server side Error"
+            return False
 
     def update(self, paths, data):
         try:
@@ -39,22 +36,22 @@ class Data:
             value = read.read()
             if value:
                 child_read = open(path.abspath(paths), 'w')
-                child_read.write(json.dumps(data))
+                child_read.write(convertJSON(data))
                 child_read.close()
-                return "Data updated"
+                return True
             read.close()
         except:
-            return "server side Error"
+            return False
 
     def delete(self, paths):
         try:
             read = open(path.abspath(paths), 'r')
             data = read.read()
             read.close()
-            try:
+            if data:
                 os.remove(path.abspath(paths))
-                return "data deleted"
-            except:
-                return "server side Error"
+                return True
+            else:
+                return False
         except:
-            return "server side Error"
+            return False
