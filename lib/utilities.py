@@ -1,3 +1,4 @@
+import os
 import json
 from random import Random
 
@@ -16,3 +17,7 @@ def generate_id(first_name, last_name):
 
 def token():
     return str(Random().randint(1, 1000000))
+
+
+def list_files(directory):
+    return os.listdir(directory)
