@@ -5,17 +5,17 @@ data = Data()
 token = token()
 
 
-class Student_Payments:
+class Teacher_Payments:
     def __init__(self):
-        self.name = "Student Payments"
+        self.name = "Teacher Payments"
         self.month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     def add(self):
-        student_id = input("Enter student id: ")
-        if student_id:
-            student_data = data.read('.data/students-data/' + student_id + '.json')
-            if type(student_data) == dict:
-                student_payment = student_data['payments']
+        teacher_id = input("Enter Teacher Id: ")
+        if teacher_id:
+            teacher_data = data.read('.data/teachers-data/' + teacher_id + '.json')
+            if type(teacher_data) == dict:
+                teacher_payment = teacher_data['payments']
 
                 payment_date = input("Enter payment date format(18/08/2021): ")
                 payment_amount = int(input("Enter payment amount: "))
@@ -37,43 +37,43 @@ class Student_Payments:
                         "is_payment": is_payment
                     }
 
-                    student_payment.append(payment_data)
+                    teacher_payment.append(payment_data)
 
-                    data.update('.data/students-data/' + student_id + '.json', student_data)
+                    data.update('.data/teachers-data/' + teacher_id + '.json', teacher_data)
                     return "\nPayment Successfully Added\n" + 'Token ID Number is: ' + str(token) + '\n' + 'calect Token ID Number'
                 else:
                     return "Enter valid data"
             else:
-                return "Student not found"
+                return "Teacher not found"
         else:
-            return "Enter student id"
+            return "Enter Teacher id"
 
     def read(self):
-        student_id = input("Enter student id: ")
-        if student_id:
-            student_data = data.read('.data/students-data/' + student_id + '.json')
-            if type(student_data) == dict:
+        teacher_id = input("Enter Teacher Id: ")
+        if teacher_id:
+            teacher_data = data.read('.data/teachers-data/' + teacher_id + '.json')
+            if type(teacher_data) == dict:
                 token_id = int(input("Enter token id: "))
-                student_payment = student_data['payments']
+                teacher_payment = teacher_data['payments']
 
-                for payment in student_payment:
+                for payment in teacher_payment:
                     if int(payment['token']) == token_id:
                         return payment
             else:
-                return "Student Not Registered"
+                return "Teacher Not Registered"
         else:
-            return "Enter student id"
+            return "Enter Teacher id"
 
     def update(self):
-        student_id = input("Enter student id: ")
-        if student_id:
-            student_data = data.read('.data/students-data/' + student_id + '.json')
+        teacher_id = input("Enter Teacher Id: ")
+        if teacher_id:
+            teacher_data = data.read('.data/teachers-data/' + teacher_id + '.json')
 
-            if type(student_data) == dict:
+            if type(teacher_data) == dict:
                 token_id = int(input("Enter token id: "))
-                student_payment = student_data['payments']
+                teacher_payment = teacher_data['payments']
 
-                for payment in student_payment:
+                for payment in teacher_payment:
                     if int(payment['token']) == token_id:
                         find_token = payment
 
@@ -107,30 +107,30 @@ class Student_Payments:
                         else:
                             find_token['is_payment'] = find_token['is_payment']
 
-                        data.update('.data/students-data/' + student_id + '.json', student_data)
+                        data.update('.data/teachers-data/' + teacher_id + '.json', teacher_data)
                         return "Data Updated"
 
             else:
-                return "Student Not Registered"
+                return "Teacher Not Registered"
         else:
             return "Enter student id"
 
     def delete(self):
-        student_id = input("Enter student id: ")
-        if student_id:
-            student_data = data.read('.data/students-data/' + student_id + '.json')
-            if type(student_data) == dict:
+        teacher_id = input("Enter Teacher Id: ")
+        if teacher_id:
+            teacher_data = data.read('.data/teachers-data/' + teacher_id + '.json')
+            if type(teacher_id) == dict:
 
                 token_id = int(input("Enter token id: "))
-                student_payment = student_data['payments']
+                teacher_payment = teacher_data['payments']
 
-                for payment in student_payment:
+                for payment in teacher_payment:
                     if int(payment['token']) == token_id:
-                        student_payment.remove(payment)
-                        data.update('.data/students-data/' + student_id + '.json', student_data)
+                        teacher_payment.remove(payment)
+                        data.update('.data/teachers-data/' + teacher_id + '.json', teacher_data)
                         return "Payment Data Deleted"
 
             else:
-                return "Student Not Registered"
+                return "Teacher Not Registered"
         else:
             return "Enter student id"

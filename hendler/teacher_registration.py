@@ -8,7 +8,7 @@ class Teacher_Registration:
     def __init__(self):
         self.name = "Teacher Registration"
 
-    def create(self):
+    def add(self):
         first_name = input("Enter first name: ")
         last_name = input("Enter last name: ")
         phone = input("Enter phone: ")
