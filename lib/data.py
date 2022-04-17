@@ -31,7 +31,6 @@ class Data:
             return False
 
     def update(self, paths, data):
-        print(path.abspath(paths), data)
         try:
             read = open(path.abspath(paths), 'r')
             value = read.read()
