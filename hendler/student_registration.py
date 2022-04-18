@@ -40,8 +40,8 @@ class Student_Registration:
         else:
             return 'Student Registration Failed'
 
-    def read(self):
-        student_id = input("Enter Your ID Number**: ")
+    def read(self, student_id):
+        # student_id = input("Enter Your ID Number**: ")
         if student_id:
             student_data = data.read('.data/students-data/' + student_id + '.json')
             return student_data

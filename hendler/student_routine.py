@@ -42,8 +42,8 @@ class Student_Routine:
         else:
             return "Enter Class"
 
-    def read(self):
-        class_name = input("Enter Class: ")
+    def read(self,class_name):
+
         if class_name:
             read_routine = data.read('../.data/class-routine/'+class_name+".json")
             if type(read_routine) == dict:
