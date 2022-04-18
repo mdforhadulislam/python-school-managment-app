@@ -1,4 +1,3 @@
-import os
 from lib.data import Data
 from lib.utilities import list_files
 import datetime
@@ -6,17 +5,17 @@ import datetime
 
 data = Data()
 date = datetime.datetime.now()
+student_files = list_files('.data/students-data/')
 
 
 class Student_Attendance:
     def __init__(self):
         self.name = "Student Attendance"
-        self.student_files = list_files('../.data/students-data/')
 
     def add(self):
-        for student in self.student_files:
+        for student in student_files:
             student_data = data.read('../.data/students-data/'+student)
-            present_or_absent = input(f"{student_data['id']}    {student_data['first_name']} {student_data['last_name']}   is present? (P/A): ")
+            present_or_absent = input(f"{student_data['id']}    {student_data['first_name']} {student_data['last_name']}   is present? (P/A): ") or "A "
 
             if present_or_absent == "p" or present_or_absent == "P":
                 present_or_absent = True
@@ -39,7 +38,6 @@ class Student_Attendance:
         print("Attendance Taken Complete")
 
     def read(self):
-
         global present
         student_id = input("Enter Student ID: ")
 

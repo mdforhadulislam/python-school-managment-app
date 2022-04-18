@@ -1,5 +1,3 @@
-from doctest import master
-
 from lib.data import Data
 
 data = Data()
@@ -50,8 +48,13 @@ class Student_Routine:
             read_routine = data.read('../.data/class-routine/'+class_name+".json")
             if type(read_routine) == dict:
                 for days in read_routine['routine']:
-
-                    print(days[self.day[1]])
+                    for dayname in self.day:
+                        try:
+                            for subject in days[dayname]:
+                                # print(subject)
+                                print(f'day Name:{dayname}  subject Name:{subject["subject"]}  teacher Name:{subject["teacher"]}  class Start Time:{subject["starting_time"]}  class End Time:{subject["ending_time"]}')
+                        except KeyError:
+                            pass
 
             else:
                 return "Routine Not Found"
@@ -62,9 +65,13 @@ class Student_Routine:
         pass
 
     def delete(self):
-        pass
-
-
-s = Student_Routine()
-
-print(s.read())
+        class_name = input("Enter Class: ")
+        if class_name:
+            routine_data = data.read('../.data/class-routine/'+class_name+'.json')
+            if type(routine_data) == dict:
+                data.delete('../.data/class-routine/'+class_name+'.json')
+                return "Routine Deleted"
+            else:
+                return "Routine Not Found"
+        else:
+            return "Enter Class"
