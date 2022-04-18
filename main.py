@@ -16,11 +16,6 @@ student_routine = Student_Routine()
 
 
 def student_dashboard(data):
-    # student routine
-    # student attendance
-    # student payments
-    # student notice
-
     bord_number = int(input('Enter Your Access Board Number: \n1.My Details\n2.My Class Routine\n3.My Attendance\n4.My Payments\n5.My Notice\n6.Logout\nEnter your choice: '))
     if bord_number == 1:
         student_data = student.read(data['id'])
@@ -33,26 +28,53 @@ def student_dashboard(data):
         print(f'E-mail: {student_data["email"]}')
 
         go_back = input("\nPress 'y' to go back: ")
-        print()
         if go_back == 'y' or go_back == 'Y':
             student_dashboard(data)
+        print()
 
     elif bord_number == 2:
-        class_name = input("Enter Class: ")
-        routine_data = student_routine.read(class_name)
+        routine_data = student_routine.read(data['class'])
+        print()
         print(routine_data)
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
 
     elif bord_number == 3:
-        pass
+        attendance_data = student_attendance.read(data['id'])
+        print()
+        print(attendance_data)
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
     elif bord_number == 4:
-        pass
+        payments_data = student_payments.read(data['id'])
+        print()
+        print(payments_data)
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
     elif bord_number == 5:
-        pass
+        notice_data = school_notice.read()
+        print(notice_data)
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
     elif bord_number == 6:
         control()
 
 
-
+def teacher_dashboard(data):
+    pass
 
 
 def control():
@@ -71,17 +93,26 @@ def control():
                     student_dashboard(data)
                 else:
                     print("\nWrong password!\nplease try again.")
+                    control()
             else:
                 print("\nEnter Valid Information")
                 control()
 
         elif is_registered == 2:
-            pass
+            print()
+            print(student.add())
+            control()
         else:
-            print("\nInvalid choice")
+            print("\nInvalid choice\n")
+            control()
 
     elif Identity == 2:
-        pass
+        is_registered = int(input("\nAre you registered?\n1. Yes\n2. No\nEnter your choice: "))
+        if is_registered == 1:
+            pass
+        elif is_registered == 2:
+            pass
+
 
     elif Identity == 3:
         pass

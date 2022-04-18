@@ -14,7 +14,7 @@ class Student_Attendance:
 
     def add(self):
         for student in student_files:
-            student_data = data.read('../.data/students-data/'+student)
+            student_data = data.read('.data/students-data/'+student)
             present_or_absent = input(f"{student_data['id']}    {student_data['first_name']} {student_data['last_name']}   is present? (P/A): ") or "A "
 
             if present_or_absent == "p" or present_or_absent == "P":
@@ -30,19 +30,19 @@ class Student_Attendance:
                 for attendance in student_data['attendance']:
                     if attendance['date'] != date.strftime("%x"):
                         student_data['attendance'].append(present_data)
-                        data.update('../.data/students-data/' + student, student_data)
+                        data.update('.data/students-data/' + student, student_data)
 
             else:
                 student_data['attendance'].append(present_data)
-                data.update('../.data/students-data/' + student, student_data)
+                data.update('.data/students-data/' + student, student_data)
         print("Attendance Taken Complete")
 
-    def read(self):
+    def read(self, student_id):
         global present
-        student_id = input("Enter Student ID: ")
+        # student_id = input("Enter Student ID: ")
 
         if student_id:
-            student_data = data.read('../.data/students-data/' + student_id+'.json')
+            student_data = data.read('.data/students-data/' + student_id+'.json')
             if type(student_data) == dict:
                 if len(student_data['attendance']) > 0:
                     for attendance in student_data['attendance']:
@@ -60,7 +60,7 @@ class Student_Attendance:
     def update(self):
         student_id = input("Enter Student ID: ")
         if student_id:
-            student_data = data.read('../.data/students-data/' + student_id+'.json')
+            student_data = data.read('.data/students-data/' + student_id+'.json')
             if type(student_data) == dict:
 
                 if len(student_data['attendance']) > 0:
@@ -78,7 +78,7 @@ class Student_Attendance:
                             }
                             student_data['attendance'].remove(attendance)
                             student_data['attendance'].append(update_data)
-                            data.update('../.data/students-data/' + student_id+'.json', student_data)
+                            data.update('.data/students-data/' + student_id+'.json', student_data)
                             return "Attendance Updated"
 
                 else:
@@ -91,14 +91,14 @@ class Student_Attendance:
     def delete(self):
         student_id = input("Enter Student ID: ")
         if student_id:
-            student_data = data.read('../.data/students-data/' + student_id+'.json')
+            student_data = data.read('.data/students-data/' + student_id+'.json')
             if type(student_data) == dict:
                 if len(student_data['attendance']) > 0:
                     attendance_date = input("Enter Attendance Date (MM/DD/YY): ")
                     for attendance in student_data['attendance']:
                         if attendance['date'] == attendance_date:
                             student_data['attendance'].remove(attendance)
-                            data.update('../.data/students-data/' + student_id+'.json', student_data)
+                            data.update('.data/students-data/' + student_id+'.json', student_data)
                             return "Attendance Deleted"
 
             else:

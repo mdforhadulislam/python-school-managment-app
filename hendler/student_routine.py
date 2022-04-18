@@ -9,6 +9,7 @@ class Student_Routine:
         self.day = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
 
     def add(self):
+        global day_routine
         class_name = input("Enter Class: ")
         if class_name:
             routine_data = data.read('.data/class-routine/' + class_name + '.json')
@@ -37,21 +38,20 @@ class Student_Routine:
                             self.day[day]: single_day_routine
                         }
                     routine['routine'].append(day_routine)
-                data.create('../.data/class-routine/' + class_name + '.json', routine)
+                data.create('.data/class-routine/' + class_name + '.json', routine)
                 return "Class Routine Added Successfully"
         else:
             return "Enter Class"
 
-    def read(self,class_name):
+    def read(self, class_name):
 
         if class_name:
-            read_routine = data.read('../.data/class-routine/'+class_name+".json")
+            read_routine = data.read('.data/class-routine/'+class_name+".json")
             if type(read_routine) == dict:
                 for days in read_routine['routine']:
                     for dayname in self.day:
                         try:
                             for subject in days[dayname]:
-                                # print(subject)
                                 print(f'day Name:{dayname}  subject Name:{subject["subject"]}  teacher Name:{subject["teacher"]}  class Start Time:{subject["starting_time"]}  class End Time:{subject["ending_time"]}')
                         except KeyError:
                             pass
@@ -67,9 +67,9 @@ class Student_Routine:
     def delete(self):
         class_name = input("Enter Class: ")
         if class_name:
-            routine_data = data.read('../.data/class-routine/'+class_name+'.json')
+            routine_data = data.read('.data/class-routine/'+class_name+'.json')
             if type(routine_data) == dict:
-                data.delete('../.data/class-routine/'+class_name+'.json')
+                data.delete('.data/class-routine/'+class_name+'.json')
                 return "Routine Deleted"
             else:
                 return "Routine Not Found"

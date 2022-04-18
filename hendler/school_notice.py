@@ -20,14 +20,14 @@ class Notice:
                     "title": notice_title,
                     "body": notice_body
                 }
-                data.create('../.data/notice/'+notice_title+'.json', notice)
+                data.create('.data/notice/'+notice_title+'.json', notice)
                 return "Notice Added Successfully"
         else:
             return "Enter Notice Title: "
 
     def read(self):
         for file in notice_file:
-            notice_data = data.read('../.data/notice/'+file)
+            notice_data = data.read('.data/notice/'+file)
             print(f'\n{notice_data["title"]} - {notice_data["date"]}\n{notice_data["body"]}')
 
     def update(self):
@@ -36,7 +36,7 @@ class Notice:
     def delete(self):
         notice_title = input("Enter Notice Title: ")
         if notice_title:
-            data.delete('../.data/notice/'+notice_title+'.json')
+            data.delete('.data/notice/'+notice_title+'.json')
             return "Notice Deleted Successfully"
 
         else:

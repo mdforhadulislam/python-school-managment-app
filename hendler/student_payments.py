@@ -48,17 +48,22 @@ class Student_Payments:
         else:
             return "Enter student id"
 
-    def read(self):
-        student_id = input("Enter student id: ")
+    def read(self, student_id):
+        # student_id = input("Enter student id: ")
         if student_id:
             student_data = data.read('.data/students-data/' + student_id + '.json')
             if type(student_data) == dict:
-                token_id = int(input("Enter token id: "))
                 student_payment = student_data['payments']
-
                 for payment in student_payment:
-                    if int(payment['token']) == token_id:
-                        return payment
+                    alradyclear = ''
+                    if payment['is_payment']:
+                        alradyclear = "Clear"
+                    elif not payment['is_payment']:
+                        alradyclear = "Not Clear"
+
+
+                    print(f"Payment Token Number:{payment['token']} Payment Date:{payment['date']} Payment Month:{payment['month']} Payment alrady {alradyclear}")
+
             else:
                 return "Student Not Registered"
         else:
