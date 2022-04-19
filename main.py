@@ -16,7 +16,7 @@ student_routine = Student_Routine()
 
 
 def student_dashboard(data):
-    bord_number = int(input('Enter Your Access Board Number: \n1.My Details\n2.My Class Routine\n3.My Attendance\n4.My Payments\n5.My Notice\n6.Logout\nEnter your choice: '))
+    bord_number = int(input('Enter Your Access Board Number: \n1. My Details\n2. My Class Routine\n3. My Attendance\n4. My Payments\n5. My Notice\n6. Logout\nEnter your choice: '))
     if bord_number == 1:
         student_data = student.read(data['id'])
         print(f'\nID: {student_data["id"]}')
@@ -74,7 +74,7 @@ def student_dashboard(data):
 
 
 def teacher_dashboard(data):
-    bord_number = int(input('Enter Your Access Board Number: \n1.My Details\n2.My Payments\n3.Add Notice\n4.Add Routine\n5.Call Student Attenaence\n 6.Logout\nEnter your choice: '))
+    bord_number = int(input('Enter Your Access Board Number: \n1. My Details\n2. My Payments\n3. Add Notice\n4. Add Routine\n5. Call Student Attenaence\n6. Delete Routine\n7. Delete Notice\n8. Edit Attendance 9. Logout\nEnter your choice: '))
     if bord_number == 1:
         print(f'\nID: {data["teacher_id"]}')
         print(f'Name: {data["first_name"]} {data["last_name"]}')
@@ -122,12 +122,18 @@ def teacher_dashboard(data):
         print()
 
     elif bord_number == 6:
+        pass
+    elif bord_number == 7:
+        pass
+    elif bord_number == 8:
+        pass
+    elif bord_number == 9:
         control()
 
 
 
 def control():
-    Identity = int(input("\nEnter your identity: \n1. Student\n2. Teacher\n3.Admin\nEnter your choice: "))
+    Identity = int(input("\nEnter your identity: \n1. Student\n2. Teacher\n3. Admin\nEnter your choice: "))
     if Identity == 1:
         is_registered = int(input("\nAre you registered?\n1. Yes\n2. No\nEnter your choice: "))
 
