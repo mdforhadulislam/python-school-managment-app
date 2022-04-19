@@ -74,7 +74,7 @@ def student_dashboard(data):
 
 
 def teacher_dashboard(data):
-    pass
+    
 
 
 def control():
@@ -109,9 +109,10 @@ def control():
     elif Identity == 2:
         is_registered = int(input("\nAre you registered?\n1. Yes\n2. No\nEnter your choice: "))
         if is_registered == 1:
-            pass
+            teacher_dashboard()
+
         elif is_registered == 2:
-            pass
+            control()
 
 
     elif Identity == 3:
