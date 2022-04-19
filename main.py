@@ -76,7 +76,6 @@ def student_dashboard(data):
 def teacher_dashboard(data):
     
 
-
 def control():
     Identity = int(input("\nEnter your identity: \n1. Student\n2. Teacher\n3.Admin\nEnter your choice: "))
     if Identity == 1:
