@@ -113,7 +113,6 @@ def control():
         elif is_registered == 2:
             control()
 
-
     elif Identity == 3:
         pass
 
