@@ -48,17 +48,19 @@ class Teacher_Payments:
         else:
             return "Enter Teacher id"
 
-    def read(self):
-        teacher_id = input("Enter Teacher Id: ")
+    def read(self, teacher_id):
+        # teacher_id = input("Enter Teacher Id: ")
         if teacher_id:
             teacher_data = data.read('.data/teachers-data/' + teacher_id + '.json')
             if type(teacher_data) == dict:
-                token_id = int(input("Enter token id: "))
                 teacher_payment = teacher_data['payments']
-
                 for payment in teacher_payment:
-                    if int(payment['token']) == token_id:
-                        return payment
+                    if payment['is_payment'] == True:
+                        clear_payment = "Paid"
+                    elif payment['is_payment'] == False:
+                        clear_payment = "Due"   
+                    print(f'payment date: {payment["date"]} payment amount: {payment["amount"]} payment month: {payment["month"]} is payment: {clear_payment}')
+                
             else:
                 return "Teacher Not Registered"
         else:

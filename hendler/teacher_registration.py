@@ -34,8 +34,8 @@ class Teacher_Registration:
         else:
             return "Please fill all the fields"
 
-    def read(self):
-        teacher_id = input("Enter teacher ID: ")
+    def read(self, teacher_id):
+        # teacher_id = input("Enter teacher ID: ")
         if teacher_id:
             teacher_data = data.read('.data/teachers-data/'+teacher_id+'.json')
             if type(teacher_data) == dict:

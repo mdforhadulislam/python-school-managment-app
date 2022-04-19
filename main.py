@@ -74,7 +74,57 @@ def student_dashboard(data):
 
 
 def teacher_dashboard(data):
-    
+    bord_number = int(input('Enter Your Access Board Number: \n1.My Details\n2.My Payments\n3.Add Notice\n4.Add Routine\n5.Call Student Attenaence\n 6.Logout\nEnter your choice: '))
+    if bord_number == 1:
+        print(f'\nID: {data["teacher_id"]}')
+        print(f'Name: {data["first_name"]} {data["last_name"]}')
+        print(f"Email: {data['email']}")
+        print(f"Phone: {data['phone']}")
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
+    elif bord_number == 2:
+        payments_data = teacher_payments.read(data['teacher_id'])
+        print()
+        print(payments_data)
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        # print()
+
+    elif bord_number == 3:
+        print()
+        print(school_notice.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
+    elif bord_number == 4:
+        print()
+        print(student_routine.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
+    elif bord_number == 5:
+        print()
+        print(student_attendance.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
+    elif bord_number == 6:
+        control()
+
+
 
 def control():
     Identity = int(input("\nEnter your identity: \n1. Student\n2. Teacher\n3.Admin\nEnter your choice: "))
@@ -108,7 +158,16 @@ def control():
     elif Identity == 2:
         is_registered = int(input("\nAre you registered?\n1. Yes\n2. No\nEnter your choice: "))
         if is_registered == 1:
-            teacher_dashboard()
+            teacher_id = input("Enter Teacher Id Number**: ")
+            data = teacher.read(teacher_id)
+            if type(data) == dict:
+                teacher_password = input("Enter your password: ")
+                if data['password'] == teacher_password:
+                    print("\nWelcome to your dashboard!\n")
+                    teacher_dashboard(data)
+                else:
+                    print("\nWrong password!\nplease try again.")
+                    control()
 
         elif is_registered == 2:
             control()
