@@ -66,8 +66,8 @@ class Teacher_Payments:
         else:
             return "Enter Teacher id"
 
-    def update(self):
-        teacher_id = input("Enter Teacher Id: ")
+    def update(self, teacher_id):
+        # teacher_id = input("Enter Teacher Id: ")
         if teacher_id:
             teacher_data = data.read('.data/teachers-data/' + teacher_id + '.json')
 
@@ -117,8 +117,8 @@ class Teacher_Payments:
         else:
             return "Enter student id"
 
-    def delete(self):
-        teacher_id = input("Enter Teacher Id: ")
+    def delete(self, teacher_id):
+        # teacher_id = input("Enter Teacher Id: ")
         if teacher_id:
             teacher_data = data.read('.data/teachers-data/' + teacher_id + '.json')
             if type(teacher_id) == dict:

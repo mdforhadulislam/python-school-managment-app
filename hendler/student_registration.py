@@ -49,8 +49,8 @@ class Student_Registration:
         else:
             return "Student Not Registered"
 
-    def update(self):
-        student_id = input("Enter Your ID Number**: ")
+    def update(self, student_id):
+
         if student_id:
             student_data = data.read('.data/students-data/' + student_id + '.json')
             if type(student_data) == dict:
@@ -104,8 +104,8 @@ class Student_Registration:
             else:
                 return "Student Not Registered"
 
-    def delete(self):
-        student_id = input("Enter Your ID Number**: ")
+    def delete(self, student_id):
+
         if student_id:
             data.delete('.data/students-data/' + student_id + '.json')
             return "Student Data Deleted"

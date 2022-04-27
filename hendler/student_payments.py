@@ -69,8 +69,8 @@ class Student_Payments:
         else:
             return "Enter student id"
 
-    def update(self):
-        student_id = input("Enter student id: ")
+    def update(self, student_id):
+        # student_id = input("Enter student id: ")
         if student_id:
             student_data = data.read('.data/students-data/' + student_id + '.json')
 
@@ -120,8 +120,8 @@ class Student_Payments:
         else:
             return "Enter student id"
 
-    def delete(self):
-        student_id = input("Enter student id: ")
+    def delete(self, student_id):
+        # student_id = input("Enter student id: ")
         if student_id:
             student_data = data.read('.data/students-data/' + student_id + '.json')
             if type(student_data) == dict:

@@ -155,8 +155,243 @@ def teacher_dashboard(data):
         control()
 
 
-def admin_dashboard(data):
-    pass
+def admin_dashboard():
+    bord_number = int(input('Enter Your Access Board Number:\n1. Add Student \n2. Check Student Data \n3. Student Data Update \n4. Delete Student \n5. Add Teacher \n6. Check Teacher \n7. Teacher Data Update \n8. Delete Teacher \n9. Add Notice \n 10. Check Notice \n11. Notice Data Update \n12.Delete Notice \n13. Add Student Routine \n14. Update Student Routine \n15. Check Student Routine \n16. Delete Student Routine \n17. Add Student Payments \n18. Update Student Payments \n19. Check Student Payments \n20. Delete Student Payments  \n21. Add Teacher Payments \n22. Update Teacher Payments \n23. Check Teacher Payments \n24. Delete Teacher Payments \n25. Logout \nEnter your choice: '))
+
+    if bord_number == 1:
+        print()
+        print(student.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 2:
+        print()
+        print(student.read())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 3:
+        print()
+        student_id = input("Enter Student ID: ")
+        print(student.update(student_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 4:
+        print()
+        student_id = input("Enter Student ID: ")
+        print(student.delete(student_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 5:
+        print()
+        print(teacher.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 6:
+        print()
+        teacher_id = input("Enter teacher ID: ")
+        print(teacher.read(teacher_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 7:
+        print()
+        teacher_id = input("Enter teacher ID: ")
+        print(teacher.update(teacher_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 8:
+        print()
+        teacher_id = input("Enter teacher ID: ")
+        print(teacher.delete(teacher_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 9:
+        print()
+        print(school_notice.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 10:
+        print()
+        print(school_notice.read())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 11:
+        print()
+        notice_id = input("Enter notice ID: ")
+        print(school_notice.update(notice_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 12:
+        print()
+        notice_id = input("Enter notice ID: ")
+        print(school_notice.delete(notice_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 13:
+        print()
+        print(student_routine.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 14:
+        print()
+        class_name = input("Enter class : ")
+        print(student_routine.read(class_name))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 15:
+        print()
+        class_name = input("Enter class : ")
+        print(student_routine.update(class_name))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 16:
+        print()
+        class_name = input("Enter class : ")
+        print(student_routine.delete(class_name))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 17:
+        print()
+        print(student_payments.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 18:
+        print()
+        student_id = input("Enter student id: ")
+        print(student_payments.read(student_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 19:
+        print()
+        student_id = input("Enter student id: ")
+        print(student_payments.update(student_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 20:
+        print()
+        student_id = input("Enter student id: ")
+        print(student_payments.delete(student_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 21:
+        print()
+        print(teacher_payments.add())
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 22:
+        print()
+        teacher_id = input("Enter student id: ")
+        print(teacher_payments.update(teacher_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 23:
+        print()
+        teacher_id = input("Enter student id: ")
+        print(teacher_payments.read(teacher_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 24:
+        print()
+        teacher_id = input("Enter student id: ")
+        print(teacher_payments.delete(teacher_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            admin_dashboard()
+        print()
+
+    if bord_number == 25:
+        control()
 
 
 def control():
@@ -192,6 +427,7 @@ def control():
     elif Identity == 2:
         is_registered = int(input("\nAre you registered?\n1. Yes\n2. No\nEnter your choice: "))
         if is_registered == 1:
+            print()
             teacher_id = input("Enter Teacher Id Number**: ")
             data = teacher.read(teacher_id)
             if type(data) == dict:
@@ -207,7 +443,17 @@ def control():
             control()
 
     elif Identity == 3:
-        admin_dashboard()
+        print()
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+        if username == 'admin' and password == '1234':
+            print("\nWelcome to Admin dashboard!\n")
+            print()
+            admin_dashboard()
+        else:
+            print("\nWrong username or password!\nplease try again.")
+            control()
+
 
     else:
         print("\nInvalid input")

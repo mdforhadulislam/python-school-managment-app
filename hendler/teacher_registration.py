@@ -43,8 +43,8 @@ class Teacher_Registration:
         else:
             return "Please enter teacher ID"
 
-    def update(self):
-        teacher_id = input("Enter teacher ID: ")
+    def update(self, teacher_id):
+        # teacher_id = input("Enter teacher ID: ")
         if teacher_id:
             teacher_data = data.read('.data/teachers-data/'+teacher_id+'.json')
             if type(teacher_data) == dict:
@@ -81,8 +81,8 @@ class Teacher_Registration:
         else:
             return "Please enter teacher ID"
 
-    def delete(self):
-        teacher_id = input("Enter teacher ID: ")
+    def delete(self, teacher_id):
+        # teacher_id = input("Enter teacher ID: ")
         if teacher_id:
             teacher_data = data.read('.data/teachers-data/'+teacher_id+'.json')
             if type(teacher_data) == dict:
