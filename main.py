@@ -169,7 +169,18 @@ def admin_dashboard():
 
     if bord_number == 2:
         print()
-        print(student.read())
+        student_id = input("Enter Your ID Number**: ")
+        student_data = student.read(student_id)
+        if type(student_data) == dict:
+            print(f'\nID: {student_data["id"]}')
+            print(f'Name: {student_data["first_name"]} {student_data["last_name"]}')
+            print(f'Class: {student_data["class"]}')
+            print(f'Roll: {student_data["roll"]}')
+            print(f'Phone: {student_data["phone"]}')
+            print(f'Address: {student_data["address"]}')
+            print(f'E-mail: {student_data["email"]}')
+        else:
+            print("\nNo Data Found")
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
@@ -208,7 +219,12 @@ def admin_dashboard():
     if bord_number == 6:
         print()
         teacher_id = input("Enter teacher ID: ")
-        print(teacher.read(teacher_id))
+        teacher_data = teacher.read(teacher_id)
+        print(f'\nID: {teacher_data["teacher_id"]}')
+        print(f'Name: {teacher_data["first_name"]} {teacher_data["last_name"]}')
+        print(f"Email: {teacher_data['email']}")
+        print(f"Phone: {teacher_data['phone']}")
+
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
