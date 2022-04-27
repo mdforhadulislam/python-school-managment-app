@@ -1,5 +1,5 @@
 from lib.data import Data
-from lib.utilities import list_files
+from lib.utilities import list_files,token
 import datetime
 
 data = Data()
@@ -15,13 +15,15 @@ class Notice:
         if notice_title:
             notice_body = input("Enter Notice Description: ")
             if notice_body:
+                notice_id = token()
                 notice = {
+                    "id": notice_id,
                     "date": date,
                     "title": notice_title,
                     "body": notice_body
                 }
-                data.create('.data/notice/'+notice_title+'.json', notice)
-                return "Notice Added Successfully"
+                data.create('.data/notice/'+notice_id+'.json', notice)
+                return f"Notice Added Successfully \ncollectd notice ID: {id}"
         else:
             return "Enter Notice Title: "
 
@@ -33,8 +35,7 @@ class Notice:
     def update(self):
         pass
 
-    def delete(self):
-        notice_title = input("Enter Notice Title: ")
+    def delete(self, notice_title):
         if notice_title:
             data.delete('.data/notice/'+notice_title+'.json')
             return "Notice Deleted Successfully"

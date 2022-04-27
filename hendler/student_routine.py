@@ -64,8 +64,8 @@ class Student_Routine:
     def update(self):
         pass
 
-    def delete(self):
-        class_name = input("Enter Class: ")
+    def delete(self, class_name):
+
         if class_name:
             routine_data = data.read('.data/class-routine/'+class_name+'.json')
             if type(routine_data) == dict:

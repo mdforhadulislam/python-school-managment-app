@@ -74,7 +74,7 @@ def student_dashboard(data):
 
 
 def teacher_dashboard(data):
-    bord_number = int(input('Enter Your Access Board Number: \n1. My Details\n2. My Payments\n3. Add Notice\n4. Add Routine\n5. Call Student Attenaence\n6. Delete Routine\n7. Delete Notice\n8. Edit Attendance 9. Logout\nEnter your choice: '))
+    bord_number = int(input('Enter Your Access Board Number: \n1. My Details\n2. My Payments\n3. Add Notice\n4. Add Routine\n5. Call Student Attenaence\n6. Delete Routine\n7. Delete Notice\n8. Edit Attendance \n9. Logout\nEnter your choice: '))
     if bord_number == 1:
         print(f'\nID: {data["teacher_id"]}')
         print(f'Name: {data["first_name"]} {data["last_name"]}')
@@ -122,18 +122,46 @@ def teacher_dashboard(data):
         print()
 
     elif bord_number == 6:
-        pass
+        print()
+        class_name = input("Enter Class: ")
+        print(student_routine.delete(class_name))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
     elif bord_number == 7:
-        pass
+        print()
+        notice_id = input("Enter Notice ID: ")
+        print(school_notice.delete(notice_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
     elif bord_number == 8:
-        pass
+        print()
+        student_id = input("Enter Student ID: ")
+        print(student_attendance.update(student_id))
+        print()
+        go_back = input("\nPress 'y' to go back: ")
+        if go_back == 'y' or go_back == 'Y':
+            student_dashboard(data)
+        print()
+
     elif bord_number == 9:
         control()
 
 
+def admin_dashboard(data):
+    pass
+
 
 def control():
     Identity = int(input("\nEnter your identity: \n1. Student\n2. Teacher\n3. Admin\nEnter your choice: "))
+
     if Identity == 1:
         is_registered = int(input("\nAre you registered?\n1. Yes\n2. No\nEnter your choice: "))
 
@@ -179,7 +207,7 @@ def control():
             control()
 
     elif Identity == 3:
-        pass
+        admin_dashboard()
 
     else:
         print("\nInvalid input")

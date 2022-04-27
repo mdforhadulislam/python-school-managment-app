@@ -57,8 +57,7 @@ class Student_Attendance:
         else:
             return "Enter Student ID"
 
-    def update(self):
-        student_id = input("Enter Student ID: ")
+    def update(self, student_id):
         if student_id:
             student_data = data.read('.data/students-data/' + student_id+'.json')
             if type(student_data) == dict:
