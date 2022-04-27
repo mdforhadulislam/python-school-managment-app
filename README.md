@@ -1,6 +1,6 @@
 # School Management System Api
 ## API makes to use backend language python and nodejs
-this repo useing node js 
+this repo useing row Python 
 
 # Api All About feature
 
