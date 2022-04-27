@@ -82,7 +82,7 @@ def teacher_dashboard(data):
         print(f"Phone: {data['phone']}")
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         print()
 
     elif bord_number == 2:
@@ -91,7 +91,7 @@ def teacher_dashboard(data):
         print(payments_data)
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         # print()
 
     elif bord_number == 3:
@@ -100,7 +100,7 @@ def teacher_dashboard(data):
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         print()
 
     elif bord_number == 4:
@@ -109,7 +109,7 @@ def teacher_dashboard(data):
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         print()
 
     elif bord_number == 5:
@@ -118,7 +118,7 @@ def teacher_dashboard(data):
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         print()
 
     elif bord_number == 6:
@@ -128,7 +128,7 @@ def teacher_dashboard(data):
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         print()
 
     elif bord_number == 7:
@@ -138,7 +138,7 @@ def teacher_dashboard(data):
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         print()
 
     elif bord_number == 8:
@@ -148,7 +148,7 @@ def teacher_dashboard(data):
         print()
         go_back = input("\nPress 'y' to go back: ")
         if go_back == 'y' or go_back == 'Y':
-            student_dashboard(data)
+            teacher_dashboard(data)
         print()
 
     elif bord_number == 9:
