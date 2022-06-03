@@ -1,10 +1,12 @@
-from lib.data import Data
-from lib.utilities import list_files,token
 import datetime
+
+from lib.data import Data
+from lib.utilities import list_files, token
 
 data = Data()
 date = datetime.datetime.now().strftime("%x")
 notice_file = list_files('.data/notice/')
+
 
 class Notice:
     def __init__(self):
@@ -30,7 +32,9 @@ class Notice:
     def read(self):
         for file in notice_file:
             notice_data = data.read('.data/notice/'+file)
-            print(f'\n{notice_data["title"]} - {notice_data["date"]}\n{notice_data["body"]}')
+            print(
+                f'\n{notice_data["title"]} - {notice_data["date"]}\n{notice_data["body"]}')
+        return ""
 
     def update(self):
         pass
@@ -42,4 +46,3 @@ class Notice:
 
         else:
             return "Enter Notice Title: "
-
