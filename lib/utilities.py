@@ -12,7 +12,7 @@ def convertDICT(data):
 
 
 def generate_id(first_name, last_name):
-    return first_name + "-" + last_name + "-" + str(Random().randint(1, 100))
+    return f"{first_name}-{last_name}-{str(Random().randint(1, 100))}"
 
 
 def token():

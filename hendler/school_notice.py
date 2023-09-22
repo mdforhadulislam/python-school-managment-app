@@ -13,25 +13,22 @@ class Notice:
         self.name = "Notice"
 
     def add(self):
-        notice_title = input("Enter Notice Title: ")
-        if notice_title:
-            notice_body = input("Enter Notice Description: ")
-            if notice_body:
-                notice_id = token()
-                notice = {
-                    "id": notice_id,
-                    "date": date,
-                    "title": notice_title,
-                    "body": notice_body
-                }
-                data.create('.data/notice/'+notice_id+'.json', notice)
-                return f"Notice Added Successfully \ncollectd notice ID: {id}"
-        else:
+        if not (notice_title := input("Enter Notice Title: ")):
             return "Enter Notice Title: "
+        if notice_body := input("Enter Notice Description: "):
+            notice_id = token()
+            notice = {
+                "id": notice_id,
+                "date": date,
+                "title": notice_title,
+                "body": notice_body
+            }
+            data.create(f'.data/notice/{notice_id}.json', notice)
+            return f"Notice Added Successfully \ncollectd notice ID: {id}"
 
     def read(self):
         for file in notice_file:
-            notice_data = data.read('.data/notice/'+file)
+            notice_data = data.read(f'.data/notice/{file}')
             print(
                 f'\n{notice_data["title"]} - {notice_data["date"]}\n{notice_data["body"]}')
         return ""
@@ -41,7 +38,7 @@ class Notice:
 
     def delete(self, notice_title):
         if notice_title:
-            data.delete('.data/notice/'+notice_title+'.json')
+            data.delete(f'.data/notice/{notice_title}.json')
             return "Notice Deleted Successfully"
 
         else:

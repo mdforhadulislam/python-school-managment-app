@@ -29,7 +29,7 @@ def student_dashboard(data):
         print(f'E-mail: {student_data["email"]}')
 
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             student_dashboard(data)
         print()
 
@@ -38,7 +38,7 @@ def student_dashboard(data):
         print()
         print(routine_data)
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             student_dashboard(data)
         print()
 
@@ -48,7 +48,7 @@ def student_dashboard(data):
         print(attendance_data)
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             student_dashboard(data)
         print()
 
@@ -58,7 +58,7 @@ def student_dashboard(data):
         print(payments_data)
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             student_dashboard(data)
         print()
 
@@ -66,7 +66,7 @@ def student_dashboard(data):
         notice_data = school_notice.read()
         print(notice_data)
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             student_dashboard(data)
         print()
 
@@ -82,7 +82,7 @@ def teacher_dashboard(data):
         print(f"Email: {data['email']}")
         print(f"Phone: {data['phone']}")
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
         print()
 
@@ -91,16 +91,14 @@ def teacher_dashboard(data):
         print()
         print(payments_data)
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
-        # print()
-
     elif bord_number == 3:
         print()
         print(school_notice.add())
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
         print()
 
@@ -109,7 +107,7 @@ def teacher_dashboard(data):
         print(student_routine.add())
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
         print()
 
@@ -118,7 +116,7 @@ def teacher_dashboard(data):
         print(student_attendance.add())
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
         print()
 
@@ -128,7 +126,7 @@ def teacher_dashboard(data):
         print(student_routine.delete(class_name))
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
         print()
 
@@ -138,7 +136,7 @@ def teacher_dashboard(data):
         print(school_notice.delete(notice_id))
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
         print()
 
@@ -148,7 +146,7 @@ def teacher_dashboard(data):
         print(student_attendance.update(student_id))
         print()
         go_back = input("\nPress 'y' to go back: ")
-        if go_back == 'y' or go_back == 'Y':
+        if go_back in ['y', 'Y']:
             teacher_dashboard(data)
         print()
 

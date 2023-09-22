@@ -10,44 +10,37 @@ class Data:
 
     def create(self, paths, data):
         try:
-            read = open(path.abspath(paths), 'r')
-            data = read.read()
-            read.close()
+            with open(path.abspath(paths), 'r') as read:
+                data = read.read()
             return False
         except FileExistsError and FileNotFoundError:
-            write = open(path.abspath(paths), 'w')
-            write.write(convertJSON(data))
-            write.close()
+            with open(path.abspath(paths), 'w') as write:
+                write.write(convertJSON(data))
             return data
 
     def read(self, paths):
         try:
-            read = open(path.abspath(paths), 'r')
-            data = read.read()
-            data = convertDICT(data)
-            read.close()
+            with open(path.abspath(paths), 'r') as read:
+                data = read.read()
+                data = convertDICT(data)
             return data
         except FileExistsError and FileNotFoundError:
             return False
 
     def update(self, paths, data):
         try:
-            read = open(path.abspath(paths), 'r')
-            value = read.read()
-            if value:
-                child_read = open(path.abspath(paths), 'w')
-                child_read.write(convertJSON(data))
-                child_read.close()
-                return True
-            read.close()
+            with open(path.abspath(paths), 'r') as read:
+                if value := read.read():
+                    with open(path.abspath(paths), 'w') as child_read:
+                        child_read.write(convertJSON(data))
+                    return True
         except FileExistsError and FileNotFoundError:
             return False
 
     def delete(self, paths):
         try:
-            read = open(path.abspath(paths), 'r')
-            data = read.read()
-            read.close()
+            with open(path.abspath(paths), 'r') as read:
+                data = read.read()
             if data:
                 os.remove(path.abspath(paths))
                 return True

@@ -35,7 +35,7 @@ class Student_Registration:
                 "payments": [],
                 "attendance": []
             }
-            data.create('.data/students-data/' + id_number + '.json', student_data)
+            data.create(f'.data/students-data/{id_number}.json', student_data)
             return '\nStudent Registration Successful\n' + 'Student ID Number is: ' + id_number + '\n' + 'calect Student ID Number and Password'
         else:
             return 'Student Registration Failed'
@@ -43,71 +43,45 @@ class Student_Registration:
     def read(self, student_id):
         # student_id = input("Enter Your ID Number**: ")
         if student_id:
-            student_data = data.read('.data/students-data/' + student_id + '.json')
-            return student_data
-
+            return data.read(f'.data/students-data/{student_id}.json')
         else:
             return "Student Not Registered"
 
     def update(self, student_id):
 
-        if student_id:
-            student_data = data.read('.data/students-data/' + student_id + '.json')
-            if type(student_data) == dict:
-                first_name = input("Enter Your first name**: ")
-                last_name = input("Enter Your Last Name**: ")
-                class_name = input("Enter Your Class Number**: ")
-                roll_no = input("Enter Your Roll Number**: ")
-                phone = input("Enter Your Phone Number**: ")
-                address = input("Enter Your Address: ")
-                email = input("Enter Your Email Address**: ")
+        if not student_id:
+            return
+        student_data = data.read(f'.data/students-data/{student_id}.json')
+        if type(student_data) != dict:
+            return "Student Not Registered"
+        first_name = input("Enter Your first name**: ")
+        last_name = input("Enter Your Last Name**: ")
+        class_name = input("Enter Your Class Number**: ")
+        roll_no = input("Enter Your Roll Number**: ")
+        phone = input("Enter Your Phone Number**: ")
+        address = input("Enter Your Address: ")
+        email = input("Enter Your Email Address**: ")
 
-                update_data = {}
-                if first_name:
-                    update_data["first_name"] = first_name
-                else:
-                    update_data["first_name"] = student_data["first_name"]
+        update_data = {
+            "first_name": first_name if first_name else student_data["first_name"],
+            "last_name": last_name if last_name else student_data["last_name"],
+            "class": class_name if class_name else student_data["class"],
+            "roll": roll_no if roll_no else student_data["roll"],
+            "phone": phone if phone else student_data["phone"],
+        }
+        if address:
+            update_data["phone"] = address
+        else:
+            update_data["address"] = student_data["address"]
 
-                if last_name:
-                    update_data["last_name"] = last_name
-                else:
-                    update_data["last_name"] = student_data["last_name"]
-
-                if class_name:
-                    update_data["class"] = class_name
-                else:
-                    update_data["class"] = student_data["class"]
-
-                if roll_no:
-                    update_data["roll"] = roll_no
-                else:
-                    update_data["roll"] = student_data["roll"]
-
-                if phone:
-                    update_data["phone"] = phone
-                else:
-                    update_data["phone"] = student_data["phone"]
-
-                if address:
-                    update_data["phone"] = address
-                else:
-                    update_data["address"] = student_data["address"]
-
-                if email:
-                    update_data["email"] = email
-                else:
-                    update_data["email"] = student_data["email"]
-
-                data.update('.data/students-data/' + student_id + '.json', update_data)
-                return update_data
-
-            else:
-                return "Student Not Registered"
+        update_data["email"] = email if email else student_data["email"]
+        data.update(f'.data/students-data/{student_id}.json', update_data)
+        return update_data
 
     def delete(self, student_id):
 
         if student_id:
-            data.delete('.data/students-data/' + student_id + '.json')
+            data.delete(f'.data/students-data/{student_id}.json')
             return "Student Data Deleted"
         else:
             return "Student Not Registered"

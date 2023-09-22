@@ -29,66 +29,48 @@ class Teacher_Registration:
                 "payments": []
             }
 
-            data.create('.data/teachers-data/'+teacher_id+'.json', teacher_data)
+            data.create(f'.data/teachers-data/{teacher_id}.json', teacher_data)
             return '\nTeacher created successfully\n' + "Teacher ID: " + teacher_id + '\n' + 'calect Student ID Number and Password'
         else:
             return "Please fill all the fields"
 
     def read(self, teacher_id):
-        # teacher_id = input("Enter teacher ID: ")
-        if teacher_id:
-            teacher_data = data.read('.data/teachers-data/'+teacher_id+'.json')
-            if type(teacher_data) == dict:
-                return teacher_data
-        else:
+        if not teacher_id:
             return "Please enter teacher ID"
+        teacher_data = data.read(f'.data/teachers-data/{teacher_id}.json')
+        if type(teacher_data) == dict:
+            return teacher_data
 
     def update(self, teacher_id):
         # teacher_id = input("Enter teacher ID: ")
-        if teacher_id:
-            teacher_data = data.read('.data/teachers-data/'+teacher_id+'.json')
-            if type(teacher_data) == dict:
-                first_name = input("Enter first name: ")
-                last_name = input("Enter last name: ")
-                phone = input("Enter phone: ")
-                email = input("Enter email: ")
-
-                if first_name:
-                    teacher_data['first_name'] = first_name
-                else:
-                    teacher_data['first_name'] = teacher_data['first_name']
-
-                if last_name:
-                    teacher_data['last_name'] = last_name
-                else:
-                    teacher_data['last_name'] = teacher_data['last_name']
-
-                if email:
-                    teacher_data['email'] = email
-                else:
-                    teacher_data['email'] = teacher_data['email']
-
-                if phone:
-                    teacher_data['phone'] = phone
-                else:
-                    teacher_data['phone'] = teacher_data['phone']
-
-                data.update('.data/teachers-data/'+teacher_id+'.json', teacher_data)
-                return 'Teacher updated successfully'
-
-            else:
-                return "Teacher not found"
-        else:
+        if not teacher_id:
             return "Please enter teacher ID"
+        teacher_data = data.read(f'.data/teachers-data/{teacher_id}.json')
+        if type(teacher_data) != dict:
+            return "Teacher not found"
+        first_name = input("Enter first name: ")
+        last_name = input("Enter last name: ")
+        phone = input("Enter phone: ")
+        email = input("Enter email: ")
+
+        teacher_data['first_name'] = (
+            first_name if first_name else teacher_data['first_name']
+        )
+        if last_name:
+            teacher_data['last_name'] = last_name
+        else:
+            teacher_data['last_name'] = teacher_data['last_name']
+
+        teacher_data['email'] = email if email else teacher_data['email']
+        teacher_data['phone'] = phone if phone else teacher_data['phone']
+        data.update(f'.data/teachers-data/{teacher_id}.json', teacher_data)
+        return 'Teacher updated successfully'
 
     def delete(self, teacher_id):
-        # teacher_id = input("Enter teacher ID: ")
-        if teacher_id:
-            teacher_data = data.read('.data/teachers-data/'+teacher_id+'.json')
-            if type(teacher_data) == dict:
-                data.delete('.data/teachers-data/'+teacher_id+'.json')
-                return 'Teacher deleted successfully'
-            else:
-                return "Teacher not found"
-        else:
+        if not teacher_id:
             return "Please enter teacher ID"
+        teacher_data = data.read(f'.data/teachers-data/{teacher_id}.json')
+        if type(teacher_data) != dict:
+            return "Teacher not found"
+        data.delete(f'.data/teachers-data/{teacher_id}.json')
+        return 'Teacher deleted successfully'
